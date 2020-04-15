@@ -2,7 +2,7 @@ var sum = function (acc, x) { return acc + x; };
 
 var getSubTotal = function (ele) {
   var unitPrice = parseFloat($(ele).find('.unit input').val());
-  var numUnit = parseFloat($(ele).find('.num input').val());
+  var numUnit = parseFloat($(ele).find('.qty input').val());
 
   var subAmount = unitPrice * numUnit;
   $(ele).children('.amount').html(subAmount);
@@ -15,6 +15,7 @@ var updatedPrice = function () {
 
   $('tbody tr').each(function (i, ele) {
     var subAmount = getSubTotal(ele);
+    console.log(subAmount)
     subTotal.push(subAmount);
   });
 
@@ -40,7 +41,7 @@ $(document).ready(function () {
     $('tbody').append('<tr>' +
       '<td class="name">' + name + '</td>' +
       '<td class="unit"><input type="number" value="' + unit + '" /></td>' +
-      '<td class="num"><input type="number" value="' + num + '" /></td>' +
+      '<td class="qty"><input type="number" value="' + num + '" /></td>' +
       '<td class="amount"></td>' +
       '<td><button class="btn btn-light btn-sm remove">remove</button></td>' +
     '</tr>');
